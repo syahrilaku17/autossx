@@ -1,0 +1,3287 @@
+
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard  Monitoring Opus</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="asset_x/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="asset_x/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <!-- <link href="asset_x/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+   <script> const swal_fn=(icon,title,text)=>{ Swal.fire({ icon: icon, title: title, text: text }); }</script>
+       <style type="text/css">
+        .notif {
+            width: 400px;
+            padding: 5px;
+            margin: 0;
+            background-color: #DCDCDC;
+            color: black;
+            text-align: center;
+            border-radius: 20px 20px;
+            margin-bottom: 3px;
+        }
+
+        .blink {
+          animation: blink-animation 1s steps(5, start) infinite;
+          -webkit-animation: blink-animation 1s steps(5, start) infinite;
+        }
+        @keyframes blink-animation {
+          to {
+            visibility: hidden;
+          }
+        }
+        @-webkit-keyframes blink-animation {
+          to {
+            visibility: hidden;
+          }
+        }
+        .date{
+            border-radius: 10px 10px;
+        }
+        button{
+            border-radius: 10px 10px;
+            cursor: pointer;
+        }
+        #clocktime{
+          color: white;
+        }
+</style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Dashboard  Monitoring Opus <sup>2</sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                 Monitoring Opus
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+                <a class="nav-link" href="phpinfo.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>PHP Info</span></a>
+            </li>
+
+            <li class="nav-item active">
+               <a class="nav-link" href="index.php?app=allSite">
+                  <span data-feather="file"></span>
+                  OPUS ALL SITE
+                </a>
+              </li>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-2 static-top shadow">
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Tables All-  Monitoring Opus</h1>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables  Monitoring Opus</h6>
+                        </div>
+                        <div class="card-header py-3">
+                           <span class="blink">
+                               <b>Pencarian data pada bulan : 
+                                2024-05-27 S/D 2024-06-03                               </b>
+                           </span>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                <form method="POST" action="index.php?app=allSite">
+                                    <input type="DATE" name="H1" class="form-control" value="2024-05-27">
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <input type ="DATE" name="H2" class="form-control"  value="2024-06-03">   
+                                </div>
+                                <div style="margin-left: 10px;">
+                                  <button type="submit" name="Chek" class="btn btn-primary"> Chek</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <h5>OPUS ALL SITE & (ITOS JAMBI , ITOS TELUK BAYUR, ITOS TO1, ITOS T2, ITOS TO3, ITOS SUNDA KELAPA, ITOS BENGKULU)</h5><hr>
+	<hr>
+	<div class="table-responsive">
+		<table id="OPUS_REPO_PLG" class='cell-border' style='width:100%'>
+     <h5> OPUS PALEMBANG</h5>
+			<thead>
+				<tr>
+					<th>VESSEL VOYAGE</th>
+					<th>LOA</th>
+					<th>BERTH POSITION</th>
+					<th>KDM</th>
+					<th>SHIPPING LINE</th>
+					<th>VESSEL ROUTE</th>
+					<th>DETAIL ROUTE</th>
+					<th>DISCH LOAD</th>
+					<th>ETA</th>
+					<th>ETB</th>
+					<th>ETD</th>
+					<th>ATA</th>
+					<th>ATB</th>
+					<th>ATD</th>
+					<th>OPEN STACK </th>
+					<th>BOOKING TEUS</th>
+					<th>SERVICE</th>
+					<th>NOTE</th>
+					<th>STATUS</th>
+				</tr>
+			</thead>
+			<tbody>
+								<hr>
+	<div class="table-responsive">
+		<table id="OPUS_REPO_PNK" class='cell-border' style='width:100%'>
+     <h5> OPUS PONTIANAK</h5>
+			<thead>
+				<tr>
+					<th>VESSEL VOYAGE</th>
+					<th>LOA</th>
+					<th>BERTH POSITION</th>
+					<th>KDM</th>
+					<th>SHIPPING LINE</th>
+					<th>VESSEL ROUTE</th>
+					<th>DETAIL ROUTE</th>
+					<th>DISCH LOAD</th>
+					<th>ETA</th>
+					<th>ETB</th>
+					<th>ETD</th>
+					<th>ATA</th>
+					<th>ATB</th>
+					<th>ATD</th>
+					<th>OPEN STACK </th>
+					<th>BOOKING TEUS</th>
+					<th>SERVICE</th>
+					<th>NOTE</th>
+					<th>STATUS</th>
+				</tr>
+			</thead>
+			<tbody>
+								<hr>
+	<div class="table-responsive">
+		<table id="OPUS_REPO_PJG" class='cell-border' style='width:100%'>
+     <h5> OPUS PANJANG</h5>
+			<thead>
+				<tr>
+					<th>VESSEL VOYAGE</th>
+					<th>LOA</th>
+					<th>BERTH POSITION</th>
+					<th>KDM</th>
+					<th>SHIPPING LINE</th>
+					<th>VESSEL ROUTE</th>
+					<th>DETAIL ROUTE</th>
+					<th>DISCH LOAD</th>
+					<th>ETA</th>
+					<th>ETB</th>
+					<th>ETD</th>
+					<th>ATA</th>
+					<th>ATB</th>
+					<th>ATD</th>
+					<th>OPEN STACK </th>
+					<th>BOOKING TEUS</th>
+					<th>SERVICE</th>
+					<th>NOTE</th>
+					<th>STATUS</th>
+				</tr>
+			</thead>
+			<tbody>
+								<hr>
+	<div class="table-responsive">
+		<table id="OPUS_REPO_T03" class='cell-border' style='width:100%'>
+     <h5> OPUS TO3</h5>
+			<thead>
+				<tr>
+					<th>VESSEL VOYAGE</th>
+					<th>LOA</th>
+					<th>BERTH POSITION</th>
+					<th>KDM</th>
+					<th>SHIPPING LINE</th>
+					<th>VESSEL ROUTE</th>
+					<th>DETAIL ROUTE</th>
+					<th>DISCH LOAD</th>
+					<th>ETA</th>
+					<th>ETB</th>
+					<th>ETD</th>
+					<th>ATA</th>
+					<th>ATB</th>
+					<th>ATD</th>
+					<th>OPEN STACK </th>
+					<th>BOOKING TEUS</th>
+					<th>SERVICE</th>
+					<th>NOTE</th>
+					<th>STATUS</th>
+				</tr>
+			</thead>
+			<tbody>
+									<tr>
+						<td>CTP GOLDEN  ~  11E24 / 11E24</td>
+						<td>145</td>
+						<td>SANDAR KIRI</td>
+						<td>13</td>
+						<td>CTP LINES</td>
+						<td>MYPKG  -  IDJKT</td>
+						<td>PORT KELANG,MALAYSIA  -  JAKARTA, INDONESIA</td>
+						<td>337/0</td>
+						<td>27-05-2024 07:00</td>
+						<td>27-05-2024 08:00</td>
+						<td>27-05-2024 23:00</td>
+						<td>27-05-2024 06:00</td>
+						<td>27-05-2024 07:00</td>
+						<td>28-05-2024 02:00</td>
+						<td>NO</td>
+						<td>1196</td>
+						<td>JPKJ</td>
+						<td>DISCH ONLY</td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>MSC TARA III  ~  HZ420R / HZ420R</td>
+						<td>199</td>
+						<td>SANDAR KIRI</td>
+						<td></td>
+						<td>Mediterranean Shipping Company</td>
+						<td>IDJKT  -  IDJKT</td>
+						<td>JAKARTA, INDONESIA  -  JAKARTA, INDONESIA</td>
+						<td>288/213</td>
+						<td>28-05-2024 04:00</td>
+						<td>28-05-2024 05:00</td>
+						<td>28-05-2024 18:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>NO</td>
+						<td></td>
+						<td>LANGCO</td>
+						<td>Update ETA : 28/05 03.00</td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>CTP GOLDEN  ~  12W24 / 12W24</td>
+						<td>145</td>
+						<td>SANDAR KIRI</td>
+						<td>13</td>
+						<td>CTP LINES</td>
+						<td>MYPKG  -  IDJKT</td>
+						<td>PORT KELANG,MALAYSIA  -  JAKARTA, INDONESIA</td>
+						<td>0/291</td>
+						<td>28-05-2024 16:00</td>
+						<td>28-05-2024 17:00</td>
+						<td>28-05-2024 23:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>NO</td>
+						<td>1196</td>
+						<td>JPKJ</td>
+						<td></td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>MSC ANCONA III  ~  HZ421R / HZ421R</td>
+						<td>200</td>
+						<td>SANDAR KIRI</td>
+						<td></td>
+						<td>Mediterranean Shipping Company</td>
+						<td>HKHKG  -  IDJKT</td>
+						<td>HONG KONG, HONG KONG  -  JAKARTA, INDONESIA</td>
+						<td>0/245</td>
+						<td>28-05-2024 22:00</td>
+						<td>28-05-2024 23:00</td>
+						<td>29-05-2024 20:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>NO</td>
+						<td>2516</td>
+						<td>LANGCO</td>
+						<td>ETA 27 MAY 2024 JAM 01.00
+OPEN STACK 22 MAY 00.01</td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>MSC CORCOVADO III  ~  KE420A / KE420A</td>
+						<td>207</td>
+						<td>SANDAR KIRI</td>
+						<td></td>
+						<td>Mediterranean Shipping Company</td>
+						<td>IDJKT  -  IDJKT</td>
+						<td>JAKARTA, INDONESIA  -  JAKARTA, INDONESIA</td>
+						<td>1/58</td>
+						<td>29-05-2024 21:00</td>
+						<td>29-05-2024 22:00</td>
+						<td>30-05-2024 04:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>NO</td>
+						<td>2478</td>
+						<td>KIWI</td>
+						<td>ETA 22-5 06.00
+UPDATE ETA : 28/05 10:00</td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>MSC ELIZABETH III  ~  HO419R / HO419R</td>
+						<td>210</td>
+						<td>SANDAR KIRI</td>
+						<td>11</td>
+						<td>Mediterranean Shipping Company</td>
+						<td>IDJKT  -  IDJKT</td>
+						<td>JAKARTA, INDONESIA  -  JAKARTA, INDONESIA</td>
+						<td>0/400</td>
+						<td>29-05-2024 22:00</td>
+						<td>29-05-2024 23:00</td>
+						<td>30-05-2024 17:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>NO</td>
+						<td>2556</td>
+						<td>SEAHORSE</td>
+						<td>Update ETA : 28/05/2024   07:00</td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>PIYA BHUM  ~  020E / 020W</td>
+						<td>172</td>
+						<td>SANDAR KIRI</td>
+						<td>13</td>
+						<td>REGIONAL CONTAINER LINES PTE LTD</td>
+						<td>IDJKT  -  IDJKT</td>
+						<td>JAKARTA, INDONESIA  -  JAKARTA, INDONESIA</td>
+						<td>0/700</td>
+						<td>30-05-2024 06:00</td>
+						<td>30-05-2024 07:00</td>
+						<td>31-05-2024 00:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>YES</td>
+						<td>1707</td>
+						<td>VMS</td>
+						<td>ETA 28/05
+OPEN STACK 25/05</td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>MSC ULSAN III  ~  HO421R / HO421R</td>
+						<td>215</td>
+						<td>SANDAR KIRI</td>
+						<td>16.0</td>
+						<td>Mediterranean Shipping Company</td>
+						<td>IDJKT  -  IDJKT</td>
+						<td>JAKARTA, INDONESIA  -  JAKARTA, INDONESIA</td>
+						<td>/450</td>
+						<td>30-05-2024 10:00</td>
+						<td>30-05-2024 11:00</td>
+						<td>31-05-2024 05:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>YES</td>
+						<td>0.0</td>
+						<td>SEAHORSE</td>
+						<td>ETA 29 MEI 2024 10:00
+CCT 6 HOURS BEFORE ACTUAL ETA</td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>BG LL 2506  ~  263JN / 263JN</td>
+						<td>73</td>
+						<td>SANDAR KANAN</td>
+						<td></td>
+						<td>PELAYARAN SUKSES SINDO DAMAI</td>
+						<td>IDDJB  -  IDJKT</td>
+						<td>JAMBI,INDONESIA  -  JAKARTA, INDONESIA</td>
+						<td>105/</td>
+						<td>30-05-2024 21:00</td>
+						<td>30-05-2024 22:00</td>
+						<td>31-05-2024 04:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>NO</td>
+						<td></td>
+						<td>PSSD</td>
+						<td>DISCH ONLY</td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>MSC CAPE III  ~  FC421A / FC421A</td>
+						<td>222</td>
+						<td>SANDAR KIRI</td>
+						<td></td>
+						<td>Mediterranean Shipping Company</td>
+						<td>AUBNE  -  IDJKT</td>
+						<td>BRISBANE, AUSTRALIA  -  JAKARTA, INDONESIA</td>
+						<td>/175</td>
+						<td>30-05-2024 22:00</td>
+						<td>30-05-2024 23:00</td>
+						<td>31-05-2024 06:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>NO</td>
+						<td></td>
+						<td>CPRICORN</td>
+						<td>OMITT By Email
+ETA 27 MAY 2024 22:00
+CCT 6 HOURS BEFORE ACTUAL ETA
+</td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>MSC LIDIA  ~  KE421A / KE421A</td>
+						<td>209</td>
+						<td>SANDAR KIRI</td>
+						<td></td>
+						<td>Mediterranean Shipping Company</td>
+						<td>IDJKT  -  IDJKT</td>
+						<td>JAKARTA, INDONESIA  -  JAKARTA, INDONESIA</td>
+						<td>/55</td>
+						<td>31-05-2024 08:00</td>
+						<td>31-05-2024 09:00</td>
+						<td>31-05-2024 16:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>YES</td>
+						<td></td>
+						<td>KIWI</td>
+						<td>ETA 29 MAY 2024 JAM 06.00</td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>CALI  ~  FC422A / FC422A</td>
+						<td>288</td>
+						<td>SANDAR KIRI</td>
+						<td>10</td>
+						<td>Mediterranean Shipping Company</td>
+						<td>AUBNE  -  IDJKT</td>
+						<td>BRISBANE, AUSTRALIA  -  JAKARTA, INDONESIA</td>
+						<td>1/163</td>
+						<td>31-05-2024 22:00</td>
+						<td>31-05-2024 23:00</td>
+						<td>01-06-2024 23:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>YES</td>
+						<td>3614</td>
+						<td>CPRICORN</td>
+						<td>ETA : 02/06 22:00</td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>MSC SOMYA III  ~  HV418A / HV418A</td>
+						<td>207</td>
+						<td>SANDAR KIRI</td>
+						<td>16</td>
+						<td>Mediterranean Shipping Company</td>
+						<td>  -  IDJKT</td>
+						<td>  -  JAKARTA, INDONESIA</td>
+						<td>/0</td>
+						<td>01-06-2024 16:00</td>
+						<td>01-06-2024 17:00</td>
+						<td>02-06-2024 07:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>NO</td>
+						<td></td>
+						<td>ESEA</td>
+						<td>DISCH ONLY</td>
+						<td>PROGRESS					</tr>
+									<tr>
+						<td>MSC RIONA  ~  HZ422R / HZ422R</td>
+						<td>184</td>
+						<td>SANDAR KIRI</td>
+						<td></td>
+						<td>Mediterranean Shipping Company</td>
+						<td>HKHKG  -  IDJKT</td>
+						<td>HONG KONG, HONG KONG  -  JAKARTA, INDONESIA</td>
+						<td>/155</td>
+						<td>02-06-2024 01:00</td>
+						<td>02-06-2024 02:00</td>
+						<td>02-06-2024 23:00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>YES</td>
+						<td></td>
+						<td>LANGCO</td>
+						<td>ETA : 03/06 01:00</td>
+						<td>PROGRESS					</tr>
+							
+<!-- UNTUK ITOS  -->
+ 
+  <hr>
+  <div class="table-responsive">
+    <table id="ITOS_REPO_JBI" class='cell-border' style='width:100%'>
+     <h5> ITOS JAMBI</h5>
+      <thead>
+        <tr>
+          <th>VESSEL</th>
+          <th>VOYAGE IN</th>
+          <th>VOYAGE OUT</th>
+          <th>OPERATOR NAME</th>
+		      <th>DISCH LOAD</th>
+          <th>BOOKING TEUS</th>
+          <th>ETA</th>
+          <th>ETD</th>
+          <th>OPEN STACK</th>
+          <th>CLOSSING TIME</th>
+          <th>ATA</th>
+          <th>ATB</th>
+          <th>START WORK</th>
+          <th>END WORK</th>
+          <th>ATD</th>
+          <th>BERTH POSITION</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>BG. SUMBER JAYA 2515</td>
+            <td>J176E</td>
+            <td>IN</td>
+            <td>Advantis Sabang Raya Logistik</td>
+	       		<td>0/0</td>
+            <td>164</td>
+            <td>27-05-2024 08:00</td>
+            <td>28-05-2024 23:00</td>
+            <td>28-05-2024 10:00</td>
+            <td>28-05-2024 17:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>BG. SUMBER JAYA 2515</td>
+            <td>S389N</td>
+            <td>OUT</td>
+            <td>Advantis Sabang Raya Logistik</td>
+	       		<td>0/136</td>
+            <td>190</td>
+            <td>27-05-2024 08:00</td>
+            <td>28-05-2024 23:59</td>
+            <td>21-05-2024 10:50</td>
+            <td>28-05-2024 17:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>BG. LL 2523</td>
+            <td>37 JN</td>
+            <td>IN</td>
+            <td>SINDO DAMAI LINES</td>
+	       		<td>45/0</td>
+            <td>90</td>
+            <td>27-05-2024 08:00</td>
+            <td>28-05-2024 23:00</td>
+            <td>27-05-2024 08:30</td>
+            <td>27-05-2024 08:30</td>
+            <td>27-05-2024 20:50</td>
+            <td>27-MAY-24</td>
+            <td>27-05-2024 21:00</td>
+            <td>27-05-2024 23:10</td>
+            <td>27-05-2024 23:10</td>
+            <td>SANDAR KIRI</td>
+            <td>DONE          </tr>
+                  <tr>
+            <td>BG. LL 2523</td>
+            <td>-</td>
+            <td>-</td>
+            <td>SINDO DAMAI LINES</td>
+	       		<td>0/0</td>
+            <td>210</td>
+            <td>27-05-2024 12:00</td>
+            <td>28-05-2024 23:59</td>
+            <td>27-05-2024 09:44</td>
+            <td>28-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>BG. LL 2509</td>
+            <td>27 JN</td>
+            <td>OUT</td>
+            <td>SINDO DAMAI LINES</td>
+	       		<td>0/56</td>
+            <td>210</td>
+            <td>27-05-2024 12:00</td>
+            <td>28-05-2024 23:30</td>
+            <td>20-05-2024 08:30</td>
+            <td>28-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>BG. LL 2517</td>
+            <td>351 JN</td>
+            <td>OUT</td>
+            <td>SINDO DAMAI LINES</td>
+	       		<td>0/3</td>
+            <td>210</td>
+            <td>29-05-2024 12:00</td>
+            <td>29-05-2024 23:59</td>
+            <td>27-05-2024 09:50</td>
+            <td>29-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+              
+  <hr>
+  <div class="table-responsive">
+    <table id="ITOS_REPO_TLB" class='cell-border' style='width:100%'>
+     <h5> ITOS TELUK BAYUR</h5>
+      <thead>
+        <tr>
+          <th>VESSEL</th>
+          <th>VOYAGE IN</th>
+          <th>VOYAGE OUT</th>
+          <th>OPERATOR NAME</th>
+		      <th>DISCH LOAD</th>
+          <th>BOOKING TEUS</th>
+          <th>ETA</th>
+          <th>ETD</th>
+          <th>OPEN STACK</th>
+          <th>CLOSSING TIME</th>
+          <th>ATA</th>
+          <th>ATB</th>
+          <th>START WORK</th>
+          <th>END WORK</th>
+          <th>ATD</th>
+          <th>BERTH POSITION</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>MERATUS KATINGAN</td>
+            <td>BP048S</td>
+            <td>BP048S</td>
+            <td>MERATUS LINE INDONESIA</td>
+	       		<td>286/293</td>
+            <td>500</td>
+            <td>27-05-2024 08:00</td>
+            <td>27-05-2024 23:00</td>
+            <td>18-05-2024 14:00</td>
+            <td>27-05-2024 12:00</td>
+            <td>27-05-2024 11:00</td>
+            <td>27-MAY-24</td>
+            <td>27-05-2024 12:00</td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>TANTO AMAN</td>
+            <td>360</td>
+            <td>360</td>
+            <td>TANTO INTIM LINE</td>
+	       		<td>107/69</td>
+            <td>250</td>
+            <td>29-05-2024 13:00</td>
+            <td>29-05-2024 23:00</td>
+            <td>25-05-2024 10:00</td>
+            <td>29-05-2024 13:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>MV. LAGUN MAS</td>
+            <td>42/24</td>
+            <td>42/24</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/45</td>
+            <td>250</td>
+            <td>30-05-2024 18:00</td>
+            <td>30-05-2024 12:00</td>
+            <td>26-05-2024 09:00</td>
+            <td>30-05-2024 18:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>MV. MERATUS KAHAYAN</td>
+            <td>BP049S</td>
+            <td>BP049S</td>
+            <td>MERATUS LINE INDONESIA</td>
+	       		<td>0/23</td>
+            <td>400</td>
+            <td>31-05-2024 18:00</td>
+            <td>31-05-2024 23:00</td>
+            <td>27-05-2024 10:00</td>
+            <td>31-05-2024 18:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+              
+  <hr>
+  <div class="table-responsive">
+    <table id="ITOS_REPO_T01" class='cell-border' style='width:100%'>
+     <h5> ITOS TO1</h5>
+      <thead>
+        <tr>
+          <th>VESSEL</th>
+          <th>VOYAGE IN</th>
+          <th>VOYAGE OUT</th>
+          <th>OPERATOR NAME</th>
+		      <th>DISCH LOAD</th>
+          <th>BOOKING TEUS</th>
+          <th>ETA</th>
+          <th>ETD</th>
+          <th>OPEN STACK</th>
+          <th>CLOSSING TIME</th>
+          <th>ATA</th>
+          <th>ATB</th>
+          <th>START WORK</th>
+          <th>END WORK</th>
+          <th>ATD</th>
+          <th>BERTH POSITION</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>BALI GIANYAR</td>
+            <td>1224</td>
+            <td>1324</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>7/0</td>
+            <td>240</td>
+            <td>27-05-2024 06:00</td>
+            <td>30-05-2024 16:00</td>
+            <td>24-05-2024 16:00</td>
+            <td>27-05-2024 12:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>TANTO SEHAT</td>
+            <td>376B</td>
+            <td>377</td>
+            <td>TANTO INTIM LINE</td>
+	       		<td>0/107</td>
+            <td>250</td>
+            <td>29-05-2024 21:00</td>
+            <td>30-05-2024 23:00</td>
+            <td>24-05-2024 09:00</td>
+            <td>30-05-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+              
+  <hr>
+  <div class="table-responsive">
+    <table id="ITOS_REPO_T02" class='cell-border' style='width:100%'>
+     <h5> ITOS TO2</h5>
+      <thead>
+        <tr>
+          <th>VESSEL</th>
+          <th>VOYAGE IN</th>
+          <th>VOYAGE OUT</th>
+          <th>OPERATOR NAME</th>
+		      <th>DISCH LOAD</th>
+          <th>BOOKING TEUS</th>
+          <th>ETA</th>
+          <th>ETD</th>
+          <th>OPEN STACK</th>
+          <th>CLOSSING TIME</th>
+          <th>ATA</th>
+          <th>ATB</th>
+          <th>START WORK</th>
+          <th>END WORK</th>
+          <th>ATD</th>
+          <th>BERTH POSITION</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>SPIL RATNA</td>
+            <td>1924</td>
+            <td>2024</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>0/17</td>
+            <td>240</td>
+            <td>01-06-2024 04:00</td>
+            <td>02-06-2024 06:00</td>
+            <td>25-05-2024 15:00</td>
+            <td>01-06-2024 16:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>FATIMA</td>
+            <td>2407</td>
+            <td>2408</td>
+            <td>SAMAS LINE</td>
+	       		<td>0/9</td>
+            <td>100</td>
+            <td>02-06-2024 08:00</td>
+            <td>03-06-2024 19:00</td>
+            <td>27-05-2024 08:00</td>
+            <td>02-06-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>BALI GIANYAR</td>
+            <td>1224</td>
+            <td>1324A</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>0/0</td>
+            <td>90</td>
+            <td>27-05-2024 06:00</td>
+            <td>28-05-2024 08:00</td>
+            <td>22-05-2024 15:00</td>
+            <td>17-05-2024 23:59</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>BALI GIANYAR</td>
+            <td>1224</td>
+            <td>1324</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>0/0</td>
+            <td>300</td>
+            <td>27-05-2024 07:00</td>
+            <td>28-05-2024 08:00</td>
+            <td>21-05-2024 23:00</td>
+            <td>27-05-2024 23:59</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>MAGELLAN</td>
+            <td>1024</td>
+            <td>1124</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>0/1</td>
+            <td>150</td>
+            <td>27-05-2024 14:00</td>
+            <td>28-05-2024 16:00</td>
+            <td>25-05-2024 13:00</td>
+            <td>27-05-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>ARMADA SERASI</td>
+            <td>1324</td>
+            <td>1424</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>386/178</td>
+            <td>350</td>
+            <td>27-05-2024 15:00</td>
+            <td>28-05-2024 16:00</td>
+            <td>18-05-2024 15:00</td>
+            <td>27-05-2024 23:59</td>
+            <td>27-05-2024 23:00</td>
+            <td>27-MAY-24</td>
+            <td>27-05-2024 23:45</td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>TANTO KASIH</td>
+            <td>236B</td>
+            <td>237</td>
+            <td>TANTO</td>
+	       		<td>0/0</td>
+            <td>300</td>
+            <td>27-05-2024 20:00</td>
+            <td>29-05-2024 23:59</td>
+            <td>22-05-2024 15:00</td>
+            <td>29-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>TANTO MANIS. KM</td>
+            <td>387B</td>
+            <td>388</td>
+            <td>TANTO</td>
+	       		<td>0/161</td>
+            <td>400</td>
+            <td>27-05-2024 23:00</td>
+            <td>29-05-2024 23:59</td>
+            <td>24-05-2024 12:30</td>
+            <td>29-05-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>TMS GLORY</td>
+            <td>S2441</td>
+            <td>N2443</td>
+            <td>TRESNAMUDA SEJATI</td>
+	       		<td>0/134</td>
+            <td>150</td>
+            <td>28-05-2024 01:00</td>
+            <td>28-05-2024 23:00</td>
+            <td>27-05-2024 10:00</td>
+            <td>28-05-2024 10:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>ORIENTAL SILVER</td>
+            <td>0724</td>
+            <td>0824</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>487/307</td>
+            <td>400</td>
+            <td>28-05-2024 13:00</td>
+            <td>29-05-2024 23:00</td>
+            <td>22-05-2024 08:00</td>
+            <td>28-05-2024 23:59</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>TANTO SEJAHTERA</td>
+            <td>123B</td>
+            <td>124OUT</td>
+            <td>TANTO</td>
+	       		<td>0/122</td>
+            <td>250</td>
+            <td>28-05-2024 16:00</td>
+            <td>29-05-2024 23:00</td>
+            <td>23-05-2024 11:30</td>
+            <td>29-05-2024 23:59</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>TANTO BERSAMA</td>
+            <td>365B</td>
+            <td>366OUT</td>
+            <td>TANTO</td>
+	       		<td>0/302</td>
+            <td>950</td>
+            <td>28-05-2024 16:00</td>
+            <td>29-05-2024 23:00</td>
+            <td>25-05-2024 01:30</td>
+            <td>29-05-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>TANTO KHARISMA</td>
+            <td>150B</td>
+            <td>151</td>
+            <td>TANTO</td>
+	       		<td>0/108</td>
+            <td>400</td>
+            <td>28-05-2024 21:00</td>
+            <td>30-05-2024 23:59</td>
+            <td>24-05-2024 14:00</td>
+            <td>30-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>TK. BG. LL2506</td>
+            <td>263JN</td>
+            <td>263JN</td>
+            <td>SINDO DAMAI LINES</td>
+	       		<td>0/55</td>
+            <td>160</td>
+            <td>28-05-2024 22:00</td>
+            <td>29-05-2024 10:00</td>
+            <td>17-05-2024 08:00</td>
+            <td>29-05-2024 09:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>BG. LL2523</td>
+            <td>37JN</td>
+            <td>37JN</td>
+            <td>SINDO DAMAI LINES</td>
+	       		<td>0/26</td>
+            <td>150</td>
+            <td>28-05-2024 22:00</td>
+            <td>29-05-2024 16:00</td>
+            <td>25-05-2024 16:00</td>
+            <td>29-05-2024 12:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>TK. BG. LL2517</td>
+            <td>351JN</td>
+            <td>351JN</td>
+            <td>SINDO DAMAI LINES</td>
+	       		<td>0/117</td>
+            <td>0</td>
+            <td>28-05-2024 22:00</td>
+            <td>29-05-2024 10:00</td>
+            <td>15-05-2024 12:00</td>
+            <td>29-05-2024 09:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>LINTAS 18. KM</td>
+            <td>1024</td>
+            <td>1124</td>
+            <td>LINTAS KUMALA ABADI LINE INDONESIA</td>
+	       		<td>0/34</td>
+            <td>110</td>
+            <td>29-05-2024 06:00</td>
+            <td>29-05-2024 21:00</td>
+            <td>25-05-2024 00:10</td>
+            <td>29-05-2024 06:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>SPIL RETNO</td>
+            <td>1424</td>
+            <td>1524</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>0/180</td>
+            <td>350</td>
+            <td>29-05-2024 13:00</td>
+            <td>30-05-2024 14:00</td>
+            <td>22-05-2024 18:00</td>
+            <td>29-05-2024 23:59</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>JOHAN FORTUNE EX JOHAN</td>
+            <td>328B</td>
+            <td>329A</td>
+            <td>TANTO</td>
+	       		<td>0/24</td>
+            <td>350</td>
+            <td>29-05-2024 22:00</td>
+            <td>30-05-2024 16:00</td>
+            <td>27-05-2024 01:00</td>
+            <td>29-05-2024 16:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>HIJAU JELITA</td>
+            <td>0524</td>
+            <td>0624</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>0/41</td>
+            <td>300</td>
+            <td>30-05-2024 06:00</td>
+            <td>31-05-2024 12:00</td>
+            <td>27-05-2024 15:00</td>
+            <td>30-05-2024 18:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>KM. ORIENTAL GOLD</td>
+            <td>0624</td>
+            <td>0724</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>0/97</td>
+            <td>200</td>
+            <td>30-05-2024 06:00</td>
+            <td>31-05-2024 16:00</td>
+            <td>27-05-2024 08:00</td>
+            <td>30-05-2024 12:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>DERAJAT</td>
+            <td>1224</td>
+            <td>1324</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>0/30</td>
+            <td>250</td>
+            <td>30-05-2024 14:00</td>
+            <td>31-05-2024 16:00</td>
+            <td>27-05-2024 15:00</td>
+            <td>30-05-2024 23:59</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>PULAU WETAR</td>
+            <td>1224</td>
+            <td>1324</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>0/102</td>
+            <td>300</td>
+            <td>30-05-2024 14:00</td>
+            <td>31-05-2024 16:00</td>
+            <td>24-05-2024 18:00</td>
+            <td>29-05-2024 23:59</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>HIJAU SAMUDRA</td>
+            <td>0724</td>
+            <td>0824</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>0/1</td>
+            <td>100</td>
+            <td>31-05-2024 14:00</td>
+            <td>01-06-2024 06:00</td>
+            <td>25-05-2024 20:00</td>
+            <td>24-05-2024 01:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+              
+  <hr>
+  <div class="table-responsive">
+    <table id="ITOS_REPO_T03" class='cell-border' style='width:100%'>
+     <h5> ITOS TO3</h5>
+      <thead>
+        <tr>
+          <th>VESSEL</th>
+          <th>VOYAGE IN</th>
+          <th>VOYAGE OUT</th>
+          <th>OPERATOR NAME</th>
+		      <th>DISCH LOAD</th>
+          <th>BOOKING TEUS</th>
+          <th>ETA</th>
+          <th>ETD</th>
+          <th>OPEN STACK</th>
+          <th>CLOSSING TIME</th>
+          <th>ATA</th>
+          <th>ATB</th>
+          <th>START WORK</th>
+          <th>END WORK</th>
+          <th>ATD</th>
+          <th>BERTH POSITION</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>LAGOA MAS.KM</td>
+            <td>3024</td>
+            <td>3124</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>209/294</td>
+            <td>400</td>
+            <td>27-05-2024 12:00</td>
+            <td>28-05-2024 23:00</td>
+            <td>18-05-2024 00:01</td>
+            <td>27-05-2024 22:00</td>
+            <td>27-05-2024 11:00</td>
+            <td>27-MAY-24</td>
+            <td>27-05-2024 12:30</td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>K.M. ICON FILIPI IV 89</td>
+            <td>3224</td>
+            <td>3324</td>
+            <td>ICON LINE</td>
+	       		<td>152/239</td>
+            <td>330</td>
+            <td>27-05-2024 17:00</td>
+            <td>28-05-2024 10:00</td>
+            <td>22-05-2024 11:00</td>
+            <td>28-05-2024 03:00</td>
+            <td>27-05-2024 21:00</td>
+            <td>27-MAY-24</td>
+            <td>27-05-2024 23:08</td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>ESTUARI MAS KM.</td>
+            <td>3424</td>
+            <td>3524</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>1/250</td>
+            <td>350</td>
+            <td>28-05-2024 00:00</td>
+            <td>28-05-2024 14:00</td>
+            <td>11-05-2024 11:00</td>
+            <td>28-05-2024 06:00</td>
+            <td>28-05-2024 01:00</td>
+            <td>28-MAY-24</td>
+            <td>28-05-2024 02:30</td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>KM GULF MAS</td>
+            <td>3224</td>
+            <td>3324</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/2</td>
+            <td>500</td>
+            <td>28-05-2024 03:00</td>
+            <td>28-05-2024 23:59</td>
+            <td>16-05-2024 18:00</td>
+            <td>28-05-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>MERATUS KAHAYAN</td>
+            <td>BP046W</td>
+            <td>BP049N</td>
+            <td>MERATUS LINE INDONESIA</td>
+	       		<td>0/176</td>
+            <td>300</td>
+            <td>28-05-2024 07:00</td>
+            <td>28-05-2024 23:59</td>
+            <td>22-05-2024 18:00</td>
+            <td>28-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>KM ICON HOSEA VI6</td>
+            <td>BS221S</td>
+            <td>BS225N</td>
+            <td>ICON LINE</td>
+	       		<td>405/303</td>
+            <td>400</td>
+            <td>28-05-2024 07:00</td>
+            <td>29-05-2024 23:59</td>
+            <td>24-05-2024 01:00</td>
+            <td>28-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>MERATUS SORONG</td>
+            <td>MS126S</td>
+            <td>JB245N</td>
+            <td>MERATUS LINE INDONESIA</td>
+	       		<td>413/531</td>
+            <td>700</td>
+            <td>28-05-2024 07:00</td>
+            <td>28-05-2024 23:59</td>
+            <td>23-05-2024 07:00</td>
+            <td>28-05-2024 12:00</td>
+            <td>28-05-2024 01:30</td>
+            <td>28-MAY-24</td>
+            <td>28-05-2024 02:33</td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>KEDUNG MAS KM.</td>
+            <td>3824</td>
+            <td>3924</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/271</td>
+            <td>300</td>
+            <td>28-05-2024 15:00</td>
+            <td>28-05-2024 23:59</td>
+            <td>23-05-2024 00:01</td>
+            <td>28-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>LAGUN MAS</td>
+            <td>4024</td>
+            <td>4124</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/128</td>
+            <td>200</td>
+            <td>28-05-2024 15:00</td>
+            <td>28-05-2024 23:00</td>
+            <td>18-05-2024 00:01</td>
+            <td>28-05-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>IFAMA MAS</td>
+            <td>4224</td>
+            <td>4324</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/22</td>
+            <td>250</td>
+            <td>28-05-2024 15:00</td>
+            <td>28-05-2024 23:00</td>
+            <td>26-05-2024 00:01</td>
+            <td>28-05-2024 20:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>UMBUL MAS KM</td>
+            <td>3524</td>
+            <td>3624</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>1/57</td>
+            <td>150</td>
+            <td>28-05-2024 15:00</td>
+            <td>28-05-2024 23:00</td>
+            <td>26-05-2024 08:00</td>
+            <td>28-05-2024 20:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>DERYA MAS</td>
+            <td>4324</td>
+            <td>4424</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/218</td>
+            <td>350</td>
+            <td>28-05-2024 15:00</td>
+            <td>28-05-2024 23:00</td>
+            <td>20-05-2024 08:00</td>
+            <td>28-05-2024 20:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>WARIH MAS KM</td>
+            <td>4024</td>
+            <td>4124</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/12</td>
+            <td>200</td>
+            <td>28-05-2024 15:00</td>
+            <td>28-05-2024 23:59</td>
+            <td>26-05-2024 08:00</td>
+            <td>28-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>TELAGA MAS</td>
+            <td>3824</td>
+            <td>3924</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/67</td>
+            <td>150</td>
+            <td>28-05-2024 15:00</td>
+            <td>28-05-2024 23:00</td>
+            <td>25-05-2024 21:00</td>
+            <td>28-05-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>HILIR MAS KM.</td>
+            <td>3024</td>
+            <td>3124</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/118</td>
+            <td>150</td>
+            <td>28-05-2024 15:00</td>
+            <td>28-05-2024 23:00</td>
+            <td>14-05-2024 11:00</td>
+            <td>28-05-2024 21:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>MERATUS MANADO .KM</td>
+            <td>MS128</td>
+            <td>MS128N</td>
+            <td>MERATUS LINE INDONESIA</td>
+	       		<td>411/377</td>
+            <td>500</td>
+            <td>28-05-2024 15:00</td>
+            <td>29-05-2024 23:59</td>
+            <td>21-05-2024 18:00</td>
+            <td>27-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>GIHON MAS</td>
+            <td>3024</td>
+            <td>3124</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/464</td>
+            <td>597</td>
+            <td>28-05-2024 18:00</td>
+            <td>28-05-2024 23:59</td>
+            <td>22-05-2024 00:01</td>
+            <td>28-05-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>MERATUS MALINO</td>
+            <td>BG107S</td>
+            <td>BG110N</td>
+            <td>MERATUS LINE INDONESIA</td>
+	       		<td>0/234</td>
+            <td>400</td>
+            <td>29-05-2024 03:00</td>
+            <td>29-05-2024 23:59</td>
+            <td>22-05-2024 18:00</td>
+            <td>29-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>MERATUS KATINGAN</td>
+            <td>BP048S</td>
+            <td>BP048E</td>
+            <td>MERATUS LINE INDONESIA</td>
+	       		<td>0/142</td>
+            <td>350</td>
+            <td>29-05-2024 07:00</td>
+            <td>29-05-2024 23:59</td>
+            <td>23-05-2024 07:00</td>
+            <td>29-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>MERATUS KARIANGAU</td>
+            <td>WS012S</td>
+            <td>WS014N</td>
+            <td>MERATUS LINE INDONESIA</td>
+	       		<td>0/116</td>
+            <td>350</td>
+            <td>29-05-2024 07:00</td>
+            <td>29-05-2024 23:59</td>
+            <td>23-05-2024 16:00</td>
+            <td>29-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>MERATUS PEMATANGSIANTAR</td>
+            <td>ADX001</td>
+            <td>ADX001N</td>
+            <td></td>
+	       		<td>0/150</td>
+            <td>250</td>
+            <td>29-05-2024 07:00</td>
+            <td>30-05-2024 23:59</td>
+            <td>22-05-2024 18:00</td>
+            <td>28-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>MERATUS MAMIRI</td>
+            <td>MS127S</td>
+            <td>MS129N</td>
+            <td>MERATUS LINE INDONESIA</td>
+	       		<td>0/84</td>
+            <td>130</td>
+            <td>29-05-2024 08:00</td>
+            <td>29-05-2024 23:59</td>
+            <td>25-05-2024 18:00</td>
+            <td>29-05-2024 23:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>BELIK MAS</td>
+            <td>3824</td>
+            <td>3924</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/404</td>
+            <td>550</td>
+            <td>29-05-2024 15:00</td>
+            <td>29-05-2024 23:00</td>
+            <td>27-05-2024 13:00</td>
+            <td>29-05-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>ICON BRAVO</td>
+            <td>4224</td>
+            <td>4324</td>
+            <td>ICON LINE</td>
+	       		<td>0/38</td>
+            <td>115</td>
+            <td>29-05-2024 15:00</td>
+            <td>30-05-2024 03:30</td>
+            <td>26-05-2024 01:00</td>
+            <td>29-05-2024 08:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>LAGUN MAS</td>
+            <td>4324</td>
+            <td>4424</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/66</td>
+            <td>150</td>
+            <td>29-05-2024 15:00</td>
+            <td>29-05-2024 23:00</td>
+            <td>27-05-2024 00:01</td>
+            <td>29-05-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>KM. BATANGHARI MAS</td>
+            <td>4524</td>
+            <td>4624</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/0</td>
+            <td>160</td>
+            <td>29-05-2024 15:00</td>
+            <td>29-05-2024 23:00</td>
+            <td>25-05-2024 13:15</td>
+            <td>29-05-2024 20:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>SEGORO MAS. KM</td>
+            <td>3124</td>
+            <td>3224</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/1</td>
+            <td>100</td>
+            <td>29-05-2024 15:00</td>
+            <td>29-05-2024 23:59</td>
+            <td>27-05-2024 15:30</td>
+            <td>29-05-2024 20:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>TELAGA MAS</td>
+            <td>3824A</td>
+            <td>3924B</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/5</td>
+            <td>300</td>
+            <td>29-05-2024 15:00</td>
+            <td>29-05-2024 23:00</td>
+            <td>27-05-2024 12:00</td>
+            <td>29-05-2024 20:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>SELAT MAS</td>
+            <td>2324</td>
+            <td>2424</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/0</td>
+            <td>950</td>
+            <td>29-05-2024 18:00</td>
+            <td>29-05-2024 23:00</td>
+            <td>21-05-2024 08:00</td>
+            <td>22-05-2024 00:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>LINTAS BRANTAS KM.</td>
+            <td>1024</td>
+            <td>1124</td>
+            <td>LINTAS KUMALA ABADI LINE INDONESIA</td>
+	       		<td>0/136</td>
+            <td>150</td>
+            <td>30-05-2024 15:00</td>
+            <td>31-05-2024 23:59</td>
+            <td>22-05-2024 07:00</td>
+            <td>30-05-2024 06:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>LAGOA MAS.KM</td>
+            <td>3224</td>
+            <td>3324</td>
+            <td>TEMPURAN EMAS LINE INDONESIA</td>
+	       		<td>0/1</td>
+            <td>400</td>
+            <td>30-05-2024 15:00</td>
+            <td>30-05-2024 23:00</td>
+            <td>28-05-2024 00:01</td>
+            <td>30-05-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KANAN</td>
+            <td>PROGRESS          </tr>
+              
+  <hr>
+  <div class="table-responsive">
+    <table id="ITOS_REPO_SKA" class='cell-border' style='width:100%'>
+     <h5> ITOS SUNDA KELAPA</h5>
+      <thead>
+        <tr>
+          <th>VESSEL</th>
+          <th>VOYAGE IN</th>
+          <th>VOYAGE OUT</th>
+          <th>OPERATOR NAME</th>
+		      <th>DISCH LOAD</th>
+          <th>BOOKING TEUS</th>
+          <th>ETA</th>
+          <th>ETD</th>
+          <th>OPEN STACK</th>
+          <th>CLOSSING TIME</th>
+          <th>ATA</th>
+          <th>ATB</th>
+          <th>START WORK</th>
+          <th>END WORK</th>
+          <th>ATD</th>
+          <th>BERTH POSITION</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>SENTOSA 12</td>
+            <td>07C</td>
+            <td>08C</td>
+            <td>BANGKA JAYA LINE</td>
+	       		<td>161/155</td>
+            <td>210</td>
+            <td>27-05-2024 06:00</td>
+            <td>29-05-2024 23:00</td>
+            <td>21-05-2024 20:00</td>
+            <td>29-05-2024 22:30</td>
+            <td>24-05-2024 14:00</td>
+            <td>24-MAY-24</td>
+            <td>24-05-2024 14:30</td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>SENTOSA 18</td>
+            <td>12C</td>
+            <td>13C</td>
+            <td>BANGKA JAYA LINE</td>
+	       		<td>0/3</td>
+            <td>120</td>
+            <td>28-05-2024 06:00</td>
+            <td>24-05-2024 23:00</td>
+            <td>24-05-2024 14:00</td>
+            <td>24-05-2024 22:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>SRIWIJAYA RAYA</td>
+            <td>05C</td>
+            <td>06C</td>
+            <td>ALEXINDO</td>
+	       		<td>101/0</td>
+            <td>120</td>
+            <td>28-05-2024 07:00</td>
+            <td>31-05-2024 23:00</td>
+            <td>27-05-2024 09:00</td>
+            <td>31-05-2024 23:00</td>
+            <td>27-05-2024 19:00</td>
+            <td>27-MAY-24</td>
+            <td>27-05-2024 20:00</td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+                  <tr>
+            <td>SENTOSA 23</td>
+            <td>07C</td>
+            <td>08C</td>
+            <td>BANGKA JAYA LINE</td>
+	       		<td>0/83</td>
+            <td>200</td>
+            <td>29-05-2024 06:00</td>
+            <td>31-05-2024 23:00</td>
+            <td>25-05-2024 08:00</td>
+            <td>31-05-2024 22:30</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+              
+  <hr>
+  <div class="table-responsive">
+    <table id="ITOS_REPO_BKL" class='cell-border' style='width:100%'>
+     <h5> ITOS BENGKULU</h5>
+      <thead>
+        <tr>
+          <th>VESSEL</th>
+          <th>VOYAGE IN</th>
+          <th>VOYAGE OUT</th>
+          <th>OPERATOR NAME</th>
+		      <th>DISCH LOAD</th>
+          <th>BOOKING TEUS</th>
+          <th>ETA</th>
+          <th>ETD</th>
+          <th>OPEN STACK</th>
+          <th>CLOSSING TIME</th>
+          <th>ATA</th>
+          <th>ATB</th>
+          <th>START WORK</th>
+          <th>END WORK</th>
+          <th>ATD</th>
+          <th>BERTH POSITION</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+                  <tr>
+            <td>BALI GIANYAR</td>
+            <td>1324</td>
+            <td>1324</td>
+            <td>SALAM PACIFIC INDONESIA LINE</td>
+	       		<td>0/27</td>
+            <td>205</td>
+            <td>02-06-2024 08:00</td>
+            <td>03-06-2024 08:00</td>
+            <td>27-05-2024 08:00</td>
+            <td>02-06-2024 01:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>SANDAR KIRI</td>
+            <td>PROGRESS          </tr>
+              		</tbody>
+	</table>
+</div>
+<script type="text/javascript">
+	// Based on example from:
+// https://datatables.net/forums/discussion/49457
+$(document).ready( function () {
+
+	function getHeaderNames(table) {
+    // Gets header names.
+    //params:
+    //  table: table ID.
+    //Returns:
+    //  Array of column header names.
+    
+    var header = $(table).DataTable().columns().header().toArray();
+
+    var names = [];
+    header.forEach(function(th) {
+    	names.push($(th).html());
+    });
+
+    return names;
+  }
+  
+  function buildCols(data) {
+    // Builds cols XML.
+    //To do: deifne widths for each column.
+    //Params:
+    //  data: row data.
+    //Returns:
+    //  String of XML formatted column widths.
+    
+    var cols = '<cols>';
+    
+    for (i=0; i<data.length; i++) {
+    	colNum = i + 1;
+    	cols += '<col min="' + colNum + '" max="' + colNum + '" width="20" customWidth="1"/>';
+    }
+    
+    cols += '</cols>';
+    
+    return cols;
+  }
+  
+  function buildRow(data, rowNum, styleNum) {
+    // Builds row XML.
+    //Params:
+    //  data: Row data.
+    //  rowNum: Excel row number.
+    //  styleNum: style number or empty string for no style.
+    //Returns:
+    //  String of XML formatted row.
+    
+    var style = styleNum ? ' s="' + styleNum + '"' : '';
+    
+    var row = '<row r="' + rowNum + '">';
+
+    for (i=0; i<data.length; i++) {
+      colNum = (i + 10).toString(36).toUpperCase();  // Convert to alpha
+      
+      var cr = colNum + rowNum;
+      
+      row += '<c t="inlineStr" r="' + cr + '"' + style + '>' +
+      '<is>' +
+      '<t>' + data[i] + '</t>' +
+      '</is>' +
+      '</c>';
+    }
+
+    row += '</row>';
+
+    return row;
+  }
+  
+  function getTableData(table, title) {
+    // Processes Datatable row data to build sheet.
+    //Params:
+    //  table: table ID.
+    //  title: Title displayed at top of SS or empty str for no title.
+    //Returns:
+    //  String of XML formatted worksheet.
+    
+    var header = getHeaderNames(table);
+    var table = $(table).DataTable();
+    var rowNum = 1;
+    var mergeCells = '';
+    var ws = '';
+    
+    ws += buildCols(header);
+    ws += '<sheetData>';
+    
+    if (title.length > 0) {
+    	ws += buildRow([title], rowNum, 51);
+    	rowNum++;
+
+    	mergeCol = ((header.length - 1) + 10).toString(36).toUpperCase();
+
+    	mergeCells = '<mergeCells count="1">'+
+    	'<mergeCell ref="A1:' + mergeCol + '1"/>' +
+    	'</mergeCells>';
+    }
+
+    ws += buildRow(header, rowNum, 2);
+    rowNum++;
+    
+    // Loop through each row to append to sheet.    
+    table.rows().every( function ( rowIdx, tableLoop, rowLoop ) {
+    	var data = this.data();
+
+      // If data is object based then it needs to be converted 
+      // to an array before sending to buildRow()
+      ws += buildRow(data, rowNum, '');
+      
+      rowNum++;
+    } );
+    
+    ws += '</sheetData>' + mergeCells;
+
+    return ws;
+
+  }
+  
+  function setSheetName(xlsx, name) {
+    // Changes tab title for sheet.
+    //Params:
+    //  xlsx: xlxs worksheet object.
+    //  name: name for sheet.
+    
+    if (name.length > 0) {
+    	var source = xlsx.xl['workbook.xml'].getElementsByTagName('sheet')[0];
+    	source.setAttribute('name', name);
+    }
+  }
+  
+  function addSheet(xlsx, table, title, name, sheetId) {
+    //Clones sheet from Sheet1 to build new sheet.
+    //Params:
+    //  xlsx: xlsx object.
+    //  table: table ID.
+    //  title: Title for top row or blank if no title.
+    //  name: Name of new sheet.
+    //  sheetId: string containing sheetId for new sheet.
+    //Returns:
+    //  Updated sheet object.
+    
+    //Add sheet2 to [Content_Types].xml => <Types>
+    //============================================
+    var source = xlsx['[Content_Types].xml'].getElementsByTagName('Override')[1];
+    var clone = source.cloneNode(true);
+    clone.setAttribute('PartName','/xl/worksheets/sheet' + sheetId + '.xml');
+    xlsx['[Content_Types].xml'].getElementsByTagName('Types')[0].appendChild(clone);
+    
+    //Add sheet relationship to xl/_rels/workbook.xml.rels => Relationships
+    //=====================================================================
+    var source = xlsx.xl._rels['workbook.xml.rels'].getElementsByTagName('Relationship')[0];
+    var clone = source.cloneNode(true);
+    clone.setAttribute('Id','rId'+sheetId+1);
+    clone.setAttribute('Target','worksheets/sheet' + sheetId + '.xml');
+    xlsx.xl._rels['workbook.xml.rels'].getElementsByTagName('Relationships')[0].appendChild(clone);
+    
+    //Add second sheet to xl/workbook.xml => <workbook><sheets>
+    //=========================================================
+    var source = xlsx.xl['workbook.xml'].getElementsByTagName('sheet')[0];
+    var clone = source.cloneNode(true);
+    clone.setAttribute('name', name);
+    clone.setAttribute('sheetId', sheetId);
+    clone.setAttribute('r:id','rId'+sheetId+1);
+    xlsx.xl['workbook.xml'].getElementsByTagName('sheets')[0].appendChild(clone);
+    
+    //Add sheet2.xml to xl/worksheets
+    //===============================
+    var xmlFormat='<?xml version="1.0" encoding="utf-8" ?>';
+    var newSheet = xmlFormat+
+    '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" mc:Ignorable="x14ac">'+
+    getTableData(table, title) +
+
+    '</worksheet>';
+
+    xlsx.xl.worksheets['sheet' + sheetId + '.xml'] = $.parseXML(newSheet);
+    
+  }
+  
+  var table = $('#OPUS_REPO_PLG').DataTable({
+  	dom: 'Bftrip',
+  	"order": [[ 8, "desc" ]],
+  	'rowCallback': function(row, data, index){
+  		if(data[8] !== ''){
+  			$(row).find('td:eq(8)').css('background-color', 'yellow');
+  			$(row).find('td:eq(8)').css('color', 'green');     
+  		}
+
+  		if(data[9].toUpperCase() !==''){
+  			$(row).find('td:eq(9)').css('background-color','yellow');
+  			$(row).find('td:eq(9)').css('color', 'green');    
+  		}
+
+
+  		if(data[10].toUpperCase() !==''){
+  			$(row).find('td:eq(10)').css('background-color','yellow');
+  			$(row).find('td:eq(10)').css('color', 'green');    
+  		}
+
+  		if(data[11] !==''){
+  			$(row).find('td:eq(11)').css('background-color', 'yellow');
+  			$(row).find('td:eq(11)').css('color', 'green');
+  			$(row).find('td:eq(8)').css('background-color', 'green');     
+  			$(row).find('td:eq(8)').css('color', 'white'); 
+
+  		}
+
+  		if(data[12] !==''){
+  			$(row).find('td:eq(12)').css('background-color', 'yellow');
+  			$(row).find('td:eq(12)').css('color', 'green');
+  			$(row).find('td:eq(9)').css('background-color', 'green');     
+  			$(row).find('td:eq(9)').css('color', 'white'); 
+
+  		}
+
+  		if(data[13].toUpperCase() !==''){
+  			$(row).find('td:eq(13)').css('background-color','yellow');
+  			$(row).find('td:eq(13)').css('color', 'green'); 
+  			$(row).find('td:eq(10)').css('background-color','green');
+  			$(row).find('td:eq(10)').css('color', 'white'); 
+  		}
+
+  		if(data[18].toUpperCase() =='DONE'){
+  			$(row).find('td:eq(11)').css('background-color', 'green');     
+  			$(row).find('td:eq(11)').css('color', 'white'); 
+  			$(row).find('td:eq(12)').css('background-color', 'green');     
+  			$(row).find('td:eq(12)').css('color', 'white'); 
+  			$(row).find('td:eq(13)').css('background-color', 'green');     
+  			$(row).find('td:eq(13)').css('color', 'white'); 
+  		}
+  	},
+  	buttons: [
+    	{
+  			extend: 'excelHtml5',
+  			text: 'Excel',
+  			messageTop: "OPUS PALEMBANG",
+  			customize: function( xlsx ) {
+  				setSheetName(xlsx, 'OPUS PALEMBANG','OPUS PALEMBANG','OPUS PALEMBANG');
+  				addSheet(xlsx, '#OPUS_REPO_PNK', 'OPUS PONTIANAK', 'OPUS PONTIANAK', '2');
+  				addSheet(xlsx, '#OPUS_REPO_PJG', 'OPUS PANJANG', 'OPUS PANJANG', '3');
+  				addSheet(xlsx, '#OPUS_REPO_T03', 'OPUS TO3', 'OPUS TO3', '4');
+
+       			addSheet(xlsx, '#ITOS_REPO_JBI', 'ITOS JAMBI', 'ITOS JAMBI', '5');
+       			addSheet(xlsx, '#ITOS_REPO_TLB', 'ITOS TELUK BAYUR', 'ITOS TELUK BAYUR', '6');
+       			addSheet(xlsx, '#ITOS_REPO_T01', 'ITOS TO1', 'ITOS TO1', '7');
+       			addSheet(xlsx, '#ITOS_REPO_T02', 'ITOS TO2', 'ITOS TO2', '8');
+       			addSheet(xlsx, '#ITOS_REPO_T03', 'ITOS TO3', 'ITOS TO3', '9');
+       			addSheet(xlsx, '#ITOS_REPO_SKA', 'ITOS SUNDA KELAPA', 'ITOS SUNDA KELAPA', '10');/* ADD START terminal itos ska & bkl by desta itsd 20032024*/
+       			addSheet(xlsx, '#ITOS_REPO_BKL', 'ITOS BENGKULU', 'ITOS BENGKULU', '11');/* ADD END terminal itos ska & bkl by desta itsd 20032024*/
+	      	}
+
+  	    },
+		{
+        	 extend: 'collection',
+        	 text: 'PDF',
+        	 buttons: [{
+        	     extend: 'pdfHtml5',
+        	     orientation: 'landscape',
+        	     pageSize: 'LEGAL',
+        	     text: 'Export to PDF Selected Rows',
+        	     	exportOptions: {
+        	         columns: ':visible',
+        	         stripHtml: true,
+        	         modifier: { selected: true }
+        	        }
+        		}	 
+			]
+		}
+	]		
+  });
+
+  var table = $('#OPUS_REPO_PNK').DataTable({
+  	"order": [[ 8, "desc" ]],
+  	'rowCallback': function(row, data, index){
+  		if(data[8] !== ''){
+  			$(row).find('td:eq(8)').css('background-color', 'yellow');
+  			$(row).find('td:eq(8)').css('color', 'green');     
+  		}
+
+  		if(data[9].toUpperCase() !==''){
+  			$(row).find('td:eq(9)').css('background-color','yellow');
+  			$(row).find('td:eq(9)').css('color', 'green');    
+  		}
+
+
+  		if(data[10].toUpperCase() !==''){
+  			$(row).find('td:eq(10)').css('background-color','yellow');
+  			$(row).find('td:eq(10)').css('color', 'green');    
+  		}
+
+  		if(data[11] !==''){
+  			$(row).find('td:eq(11)').css('background-color', 'yellow');
+  			$(row).find('td:eq(11)').css('color', 'green');
+  			$(row).find('td:eq(8)').css('background-color', 'green');     
+  			$(row).find('td:eq(8)').css('color', 'white'); 
+
+  		}
+
+  		if(data[12] !==''){
+  			$(row).find('td:eq(12)').css('background-color', 'yellow');
+  			$(row).find('td:eq(12)').css('color', 'green');
+  			$(row).find('td:eq(9)').css('background-color', 'green');     
+  			$(row).find('td:eq(9)').css('color', 'white'); 
+
+  		}
+
+  		if(data[13].toUpperCase() !==''){
+  			$(row).find('td:eq(13)').css('background-color','yellow');
+  			$(row).find('td:eq(13)').css('color', 'green'); 
+  			$(row).find('td:eq(10)').css('background-color','green');
+  			$(row).find('td:eq(10)').css('color', 'white'); 
+  		}
+
+  		if(data[18].toUpperCase() =='DONE'){
+  			$(row).find('td:eq(11)').css('background-color', 'green');     
+  			$(row).find('td:eq(11)').css('color', 'white'); 
+  			$(row).find('td:eq(12)').css('background-color', 'green');     
+  			$(row).find('td:eq(12)').css('color', 'white'); 
+  			$(row).find('td:eq(13)').css('background-color', 'green');     
+  			$(row).find('td:eq(13)').css('color', 'white'); 
+  		}
+  	}
+
+  });
+
+  var table = $('#OPUS_REPO_PJG').DataTable({
+  	"order": [[ 8, "desc" ]],
+  	'rowCallback': function(row, data, index){
+  		if(data[8] !== ''){
+  			$(row).find('td:eq(8)').css('background-color', 'yellow');
+  			$(row).find('td:eq(8)').css('color', 'green');     
+  		}
+
+  		if(data[9].toUpperCase() !==''){
+  			$(row).find('td:eq(9)').css('background-color','yellow');
+  			$(row).find('td:eq(9)').css('color', 'green');    
+  		}
+
+
+  		if(data[10].toUpperCase() !==''){
+  			$(row).find('td:eq(10)').css('background-color','yellow');
+  			$(row).find('td:eq(10)').css('color', 'green');    
+  		}
+
+  		if(data[11] !==''){
+  			$(row).find('td:eq(11)').css('background-color', 'yellow');
+  			$(row).find('td:eq(11)').css('color', 'green');
+  			$(row).find('td:eq(8)').css('background-color', 'green');     
+  			$(row).find('td:eq(8)').css('color', 'white'); 
+  			
+  		}
+
+  		if(data[12] !==''){
+  			$(row).find('td:eq(12)').css('background-color', 'yellow');
+  			$(row).find('td:eq(12)').css('color', 'green');
+  			$(row).find('td:eq(9)').css('background-color', 'green');     
+  			$(row).find('td:eq(9)').css('color', 'white'); 
+  			
+  		}
+  		
+  		if(data[13].toUpperCase() !==''){
+  			$(row).find('td:eq(13)').css('background-color','yellow');
+  			$(row).find('td:eq(13)').css('color', 'green'); 
+  			$(row).find('td:eq(10)').css('background-color','green');
+  			$(row).find('td:eq(10)').css('color', 'white'); 
+  		}
+
+  		if(data[18].toUpperCase() =='DONE'){
+  			$(row).find('td:eq(11)').css('background-color', 'green');     
+  			$(row).find('td:eq(11)').css('color', 'white'); 
+  			$(row).find('td:eq(12)').css('background-color', 'green');     
+  			$(row).find('td:eq(12)').css('color', 'white'); 
+  			$(row).find('td:eq(13)').css('background-color', 'green');     
+  			$(row).find('td:eq(13)').css('color', 'white'); 
+  		}
+  	}
+
+  });
+
+  var table = $('#OPUS_REPO_T03').DataTable({
+  	"order": [[ 8, "desc" ]],
+  	'rowCallback': function(row, data, index){
+  		if(data[8] !== ''){
+  			$(row).find('td:eq(8)').css('background-color', 'yellow');
+  			$(row).find('td:eq(8)').css('color', 'green');     
+  		}
+
+  		if(data[9].toUpperCase() !==''){
+  			$(row).find('td:eq(9)').css('background-color','yellow');
+  			$(row).find('td:eq(9)').css('color', 'green');    
+  		}
+
+
+  		if(data[10].toUpperCase() !==''){
+  			$(row).find('td:eq(10)').css('background-color','yellow');
+  			$(row).find('td:eq(10)').css('color', 'green');    
+  		}
+
+  		if(data[11] !==''){
+  			$(row).find('td:eq(11)').css('background-color', 'yellow');
+  			$(row).find('td:eq(11)').css('color', 'green');
+  			$(row).find('td:eq(8)').css('background-color', 'green');     
+  			$(row).find('td:eq(8)').css('color', 'white'); 
+  			
+  		}
+
+  		if(data[12] !==''){
+  			$(row).find('td:eq(12)').css('background-color', 'yellow');
+  			$(row).find('td:eq(12)').css('color', 'green');
+  			$(row).find('td:eq(9)').css('background-color', 'green');     
+  			$(row).find('td:eq(9)').css('color', 'white'); 
+  			
+  		}
+  		
+  		if(data[13].toUpperCase() !==''){
+  			$(row).find('td:eq(13)').css('background-color','yellow');
+  			$(row).find('td:eq(13)').css('color', 'green'); 
+  			$(row).find('td:eq(10)').css('background-color','green');
+  			$(row).find('td:eq(10)').css('color', 'white'); 
+  		}
+
+  		if(data[18].toUpperCase() =='DONE'){
+  			$(row).find('td:eq(11)').css('background-color', 'green');     
+  			$(row).find('td:eq(11)').css('color', 'white'); 
+  			$(row).find('td:eq(12)').css('background-color', 'green');     
+  			$(row).find('td:eq(12)').css('color', 'white'); 
+  			$(row).find('td:eq(13)').css('background-color', 'green');     
+  			$(row).find('td:eq(13)').css('color', 'white'); 
+  		}
+  	}
+
+  });
+
+  var table = $('#ITOS_REPO_JBI').DataTable({
+    "order": [[ 6, "desc" ]],
+        'rowCallback': function(row, data, index){
+      if(data[6] !== ''){
+        $(row).find('td:eq(6)').css('background-color', 'yellow');
+        $(row).find('td:eq(6)').css('color', 'green');     
+      }
+
+      if(data[7].toUpperCase() !==''){
+        $(row).find('td:eq(7)').css('background-color','yellow');
+        $(row).find('td:eq(7)').css('color', 'green');    
+      }
+
+
+      if(data[8].toUpperCase() !==''){
+        $(row).find('td:eq(8)').css('background-color','yellow');
+        $(row).find('td:eq(8)').css('color', 'green');    
+      }
+
+      if(data[9] !==''){
+        $(row).find('td:eq(9)').css('background-color', 'yellow');
+        $(row).find('td:eq(9)').css('color', 'green');
+        
+      }
+
+      if(data[10] !==''){
+        $(row).find('td:eq(10)').css('background-color', 'yellow');
+        $(row).find('td:eq(10)').css('color', 'green');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white'); 
+        
+      }
+      
+      if(data[11].toUpperCase() !==''){
+        $(row).find('td:eq(11)').css('background-color','yellow');
+        $(row).find('td:eq(11)').css('color', 'green');
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white'); 
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white'); 
+ 
+      }
+
+      if(data[12].toUpperCase() !==''){
+        $(row).find('td:eq(12)').css('background-color', 'yellow');     
+        $(row).find('td:eq(12)').css('color', 'green'); 
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color','green');
+        $(row).find('td:eq(10)').css('color', 'white');
+        // $(row).find('td:eq(13)').css('background-color', 'green');     
+        // $(row).find('td:eq(13)').css('color', 'white'); 
+      }
+
+      if(data[13].toUpperCase() !==''){
+        $(row).find('td:eq(13)').css('background-color', 'yellow');     
+        $(row).find('td:eq(13)').css('color', 'green'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white');
+      }
+
+      if(data[14].toUpperCase() !==''){
+        $(row).find('td:eq(14)').css('background-color', 'yellow');     
+        $(row).find('td:eq(14)').css('color', 'green'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+      }
+
+      if(data[16].toUpperCase() =='DONE'){
+        $(row).find('td:eq(15)').css('background-color', 'green');     
+        $(row).find('td:eq(15)').css('color', 'white'); 
+        $(row).find('td:eq(14)').css('background-color', 'green');     
+        $(row).find('td:eq(14)').css('color', 'white'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white');
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white');
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white');
+      }
+    }
+   
+  });
+
+
+  var table = $('#ITOS_REPO_TLB').DataTable({
+    "order": [[ 6, "desc" ]],
+        'rowCallback': function(row, data, index){
+      if(data[6] !== ''){
+        $(row).find('td:eq(6)').css('background-color', 'yellow');
+        $(row).find('td:eq(6)').css('color', 'green');     
+      }
+
+      if(data[7].toUpperCase() !==''){
+        $(row).find('td:eq(7)').css('background-color','yellow');
+        $(row).find('td:eq(7)').css('color', 'green');    
+      }
+
+
+      if(data[8].toUpperCase() !==''){
+        $(row).find('td:eq(8)').css('background-color','yellow');
+        $(row).find('td:eq(8)').css('color', 'green');    
+      }
+
+      if(data[9] !==''){
+        $(row).find('td:eq(9)').css('background-color', 'yellow');
+        $(row).find('td:eq(9)').css('color', 'green');
+        
+      }
+
+      if(data[10] !==''){
+        $(row).find('td:eq(10)').css('background-color', 'yellow');
+        $(row).find('td:eq(10)').css('color', 'green');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white'); 
+        
+      }
+      
+      if(data[11].toUpperCase() !==''){
+        $(row).find('td:eq(11)').css('background-color','yellow');
+        $(row).find('td:eq(11)').css('color', 'green');
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white'); 
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white'); 
+ 
+      }
+
+      if(data[12].toUpperCase() !==''){
+        $(row).find('td:eq(12)').css('background-color', 'yellow');     
+        $(row).find('td:eq(12)').css('color', 'green'); 
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color','green');
+        $(row).find('td:eq(10)').css('color', 'white');
+        // $(row).find('td:eq(13)').css('background-color', 'green');     
+        // $(row).find('td:eq(13)').css('color', 'white'); 
+      }
+
+      if(data[13].toUpperCase() !==''){
+        $(row).find('td:eq(13)').css('background-color', 'yellow');     
+        $(row).find('td:eq(13)').css('color', 'green'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white');
+      }
+
+      if(data[14].toUpperCase() !==''){
+        $(row).find('td:eq(14)').css('background-color', 'yellow');     
+        $(row).find('td:eq(14)').css('color', 'green'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+      }
+
+      if(data[16].toUpperCase() =='DONE'){
+        $(row).find('td:eq(15)').css('background-color', 'green');     
+        $(row).find('td:eq(15)').css('color', 'white'); 
+        $(row).find('td:eq(14)').css('background-color', 'green');     
+        $(row).find('td:eq(14)').css('color', 'white'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white');
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white');
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white');
+      }
+    }
+   
+  });
+
+
+var table = $('#ITOS_REPO_T01').DataTable({
+   "order": [[ 6, "desc" ]],
+        'rowCallback': function(row, data, index){
+      if(data[6] !== ''){
+        $(row).find('td:eq(6)').css('background-color', 'yellow');
+        $(row).find('td:eq(6)').css('color', 'green');     
+      }
+
+      if(data[7].toUpperCase() !==''){
+        $(row).find('td:eq(7)').css('background-color','yellow');
+        $(row).find('td:eq(7)').css('color', 'green');    
+      }
+
+
+      if(data[8].toUpperCase() !==''){
+        $(row).find('td:eq(8)').css('background-color','yellow');
+        $(row).find('td:eq(8)').css('color', 'green');    
+      }
+
+      if(data[9] !==''){
+        $(row).find('td:eq(9)').css('background-color', 'yellow');
+        $(row).find('td:eq(9)').css('color', 'green');
+        
+      }
+
+      if(data[10] !==''){
+        $(row).find('td:eq(10)').css('background-color', 'yellow');
+        $(row).find('td:eq(10)').css('color', 'green');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white'); 
+        
+      }
+      
+      if(data[11].toUpperCase() !==''){
+        $(row).find('td:eq(11)').css('background-color','yellow');
+        $(row).find('td:eq(11)').css('color', 'green');
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white'); 
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white'); 
+ 
+      }
+
+      if(data[12].toUpperCase() !==''){
+        $(row).find('td:eq(12)').css('background-color', 'yellow');     
+        $(row).find('td:eq(12)').css('color', 'green'); 
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color','green');
+        $(row).find('td:eq(10)').css('color', 'white');
+        // $(row).find('td:eq(13)').css('background-color', 'green');     
+        // $(row).find('td:eq(13)').css('color', 'white'); 
+      }
+
+      if(data[13].toUpperCase() !==''){
+        $(row).find('td:eq(13)').css('background-color', 'yellow');     
+        $(row).find('td:eq(13)').css('color', 'green'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white');
+      }
+
+      if(data[14].toUpperCase() !==''){
+        $(row).find('td:eq(14)').css('background-color', 'yellow');     
+        $(row).find('td:eq(14)').css('color', 'green'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+      }
+
+      if(data[16].toUpperCase() =='DONE'){
+        $(row).find('td:eq(15)').css('background-color', 'green');     
+        $(row).find('td:eq(15)').css('color', 'white'); 
+        $(row).find('td:eq(14)').css('background-color', 'green');     
+        $(row).find('td:eq(14)').css('color', 'white'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white');
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white');
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white');
+      }
+    }
+  });
+
+
+var table = $('#ITOS_REPO_T02').DataTable({
+    "order": [[ 6, "desc" ]],
+        'rowCallback': function(row, data, index){
+      if(data[6] !== ''){
+        $(row).find('td:eq(6)').css('background-color', 'yellow');
+        $(row).find('td:eq(6)').css('color', 'green');     
+      }
+
+      if(data[7].toUpperCase() !==''){
+        $(row).find('td:eq(7)').css('background-color','yellow');
+        $(row).find('td:eq(7)').css('color', 'green');    
+      }
+
+
+      if(data[8].toUpperCase() !==''){
+        $(row).find('td:eq(8)').css('background-color','yellow');
+        $(row).find('td:eq(8)').css('color', 'green');    
+      }
+
+      if(data[9] !==''){
+        $(row).find('td:eq(9)').css('background-color', 'yellow');
+        $(row).find('td:eq(9)').css('color', 'green');
+        
+      }
+
+      if(data[10] !==''){
+        $(row).find('td:eq(10)').css('background-color', 'yellow');
+        $(row).find('td:eq(10)').css('color', 'green');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white'); 
+        
+      }
+      
+      if(data[11].toUpperCase() !==''){
+        $(row).find('td:eq(11)').css('background-color','yellow');
+        $(row).find('td:eq(11)').css('color', 'green');
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white'); 
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white'); 
+ 
+      }
+
+      if(data[12].toUpperCase() !==''){
+        $(row).find('td:eq(12)').css('background-color', 'yellow');     
+        $(row).find('td:eq(12)').css('color', 'green'); 
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color','green');
+        $(row).find('td:eq(10)').css('color', 'white');
+        // $(row).find('td:eq(13)').css('background-color', 'green');     
+        // $(row).find('td:eq(13)').css('color', 'white'); 
+      }
+
+      if(data[13].toUpperCase() !==''){
+        $(row).find('td:eq(13)').css('background-color', 'yellow');     
+        $(row).find('td:eq(13)').css('color', 'green'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white');
+      }
+
+      if(data[14].toUpperCase() !==''){
+        $(row).find('td:eq(14)').css('background-color', 'yellow');     
+        $(row).find('td:eq(14)').css('color', 'green'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+      }
+
+      if(data[16].toUpperCase() =='DONE'){
+        $(row).find('td:eq(15)').css('background-color', 'green');     
+        $(row).find('td:eq(15)').css('color', 'white'); 
+        $(row).find('td:eq(14)').css('background-color', 'green');     
+        $(row).find('td:eq(14)').css('color', 'white'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white');
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white');
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white');
+      }
+    }
+  });
+
+var table = $('#ITOS_REPO_T03').DataTable({
+    "order": [[ 6, "desc" ]],
+        'rowCallback': function(row, data, index){
+      if(data[6] !== ''){
+        $(row).find('td:eq(6)').css('background-color', 'yellow');
+        $(row).find('td:eq(6)').css('color', 'green');     
+      }
+
+      if(data[7].toUpperCase() !==''){
+        $(row).find('td:eq(7)').css('background-color','yellow');
+        $(row).find('td:eq(7)').css('color', 'green');    
+      }
+
+
+      if(data[8].toUpperCase() !==''){
+        $(row).find('td:eq(8)').css('background-color','yellow');
+        $(row).find('td:eq(8)').css('color', 'green');    
+      }
+
+      if(data[9] !==''){
+        $(row).find('td:eq(9)').css('background-color', 'yellow');
+        $(row).find('td:eq(9)').css('color', 'green');
+        
+      }
+
+      if(data[10] !==''){
+        $(row).find('td:eq(10)').css('background-color', 'yellow');
+        $(row).find('td:eq(10)').css('color', 'green');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white'); 
+        
+      }
+      
+      if(data[11].toUpperCase() !==''){
+        $(row).find('td:eq(11)').css('background-color','yellow');
+        $(row).find('td:eq(11)').css('color', 'green');
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white'); 
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white'); 
+ 
+      }
+
+      if(data[12].toUpperCase() !==''){
+        $(row).find('td:eq(12)').css('background-color', 'yellow');     
+        $(row).find('td:eq(12)').css('color', 'green'); 
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color','green');
+        $(row).find('td:eq(10)').css('color', 'white');
+        // $(row).find('td:eq(13)').css('background-color', 'green');     
+        // $(row).find('td:eq(13)').css('color', 'white'); 
+      }
+
+      if(data[13].toUpperCase() !==''){
+        $(row).find('td:eq(13)').css('background-color', 'yellow');     
+        $(row).find('td:eq(13)').css('color', 'green'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white');
+      }
+
+      if(data[14].toUpperCase() !==''){
+        $(row).find('td:eq(14)').css('background-color', 'yellow');     
+        $(row).find('td:eq(14)').css('color', 'green'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+      }
+
+      if(data[16].toUpperCase() =='DONE'){
+        $(row).find('td:eq(15)').css('background-color', 'green');     
+        $(row).find('td:eq(15)').css('color', 'white'); 
+        $(row).find('td:eq(14)').css('background-color', 'green');     
+        $(row).find('td:eq(14)').css('color', 'white'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white');
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white');
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white');
+      }
+    }
+  });
+/* ADD START view itos ska & bkl by desta itsd 20032024*/
+var table = $('#ITOS_REPO_SKA').DataTable({
+    "order": [[ 6, "desc" ]],
+        'rowCallback': function(row, data, index){
+      if(data[6] !== ''){
+        $(row).find('td:eq(6)').css('background-color', 'yellow');
+        $(row).find('td:eq(6)').css('color', 'green');     
+      }
+
+      if(data[7].toUpperCase() !==''){
+        $(row).find('td:eq(7)').css('background-color','yellow');
+        $(row).find('td:eq(7)').css('color', 'green');    
+      }
+
+
+      if(data[8].toUpperCase() !==''){
+        $(row).find('td:eq(8)').css('background-color','yellow');
+        $(row).find('td:eq(8)').css('color', 'green');    
+      }
+
+      if(data[9] !==''){
+        $(row).find('td:eq(9)').css('background-color', 'yellow');
+        $(row).find('td:eq(9)').css('color', 'green');
+        
+      }
+
+      if(data[10] !==''){
+        $(row).find('td:eq(10)').css('background-color', 'yellow');
+        $(row).find('td:eq(10)').css('color', 'green');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white'); 
+        
+      }
+      
+      if(data[11].toUpperCase() !==''){
+        $(row).find('td:eq(11)').css('background-color','yellow');
+        $(row).find('td:eq(11)').css('color', 'green');
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white'); 
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white'); 
+ 
+      }
+
+      if(data[12].toUpperCase() !==''){
+        $(row).find('td:eq(12)').css('background-color', 'yellow');     
+        $(row).find('td:eq(12)').css('color', 'green'); 
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color','green');
+        $(row).find('td:eq(10)').css('color', 'white');
+        // $(row).find('td:eq(13)').css('background-color', 'green');     
+        // $(row).find('td:eq(13)').css('color', 'white'); 
+      }
+
+      if(data[13].toUpperCase() !==''){
+        $(row).find('td:eq(13)').css('background-color', 'yellow');     
+        $(row).find('td:eq(13)').css('color', 'green'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white');
+      }
+
+      if(data[14].toUpperCase() !==''){
+        $(row).find('td:eq(14)').css('background-color', 'yellow');     
+        $(row).find('td:eq(14)').css('color', 'green'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+      }
+
+      if(data[16].toUpperCase() =='DONE'){
+        $(row).find('td:eq(15)').css('background-color', 'green');     
+        $(row).find('td:eq(15)').css('color', 'white'); 
+        $(row).find('td:eq(14)').css('background-color', 'green');     
+        $(row).find('td:eq(14)').css('color', 'white'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white');
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white');
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white');
+      }
+    }
+  });
+
+var table = $('#ITOS_REPO_BKL').DataTable({
+    "order": [[ 6, "desc" ]],
+        'rowCallback': function(row, data, index){
+      if(data[6] !== ''){
+        $(row).find('td:eq(6)').css('background-color', 'yellow');
+        $(row).find('td:eq(6)').css('color', 'green');     
+      }
+
+      if(data[7].toUpperCase() !==''){
+        $(row).find('td:eq(7)').css('background-color','yellow');
+        $(row).find('td:eq(7)').css('color', 'green');    
+      }
+
+
+      if(data[8].toUpperCase() !==''){
+        $(row).find('td:eq(8)').css('background-color','yellow');
+        $(row).find('td:eq(8)').css('color', 'green');    
+      }
+
+      if(data[9] !==''){
+        $(row).find('td:eq(9)').css('background-color', 'yellow');
+        $(row).find('td:eq(9)').css('color', 'green');
+        
+      }
+
+      if(data[10] !==''){
+        $(row).find('td:eq(10)').css('background-color', 'yellow');
+        $(row).find('td:eq(10)').css('color', 'green');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white'); 
+        
+      }
+      
+      if(data[11].toUpperCase() !==''){
+        $(row).find('td:eq(11)').css('background-color','yellow');
+        $(row).find('td:eq(11)').css('color', 'green');
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white'); 
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white'); 
+ 
+      }
+
+      if(data[12].toUpperCase() !==''){
+        $(row).find('td:eq(12)').css('background-color', 'yellow');     
+        $(row).find('td:eq(12)').css('color', 'green'); 
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color','green');
+        $(row).find('td:eq(10)').css('color', 'white');
+        // $(row).find('td:eq(13)').css('background-color', 'green');     
+        // $(row).find('td:eq(13)').css('color', 'white'); 
+      }
+
+      if(data[13].toUpperCase() !==''){
+        $(row).find('td:eq(13)').css('background-color', 'yellow');     
+        $(row).find('td:eq(13)').css('color', 'green'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white');
+      }
+
+      if(data[14].toUpperCase() !==''){
+        $(row).find('td:eq(14)').css('background-color', 'yellow');     
+        $(row).find('td:eq(14)').css('color', 'green'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+      }
+
+      if(data[16].toUpperCase() =='DONE'){
+        $(row).find('td:eq(15)').css('background-color', 'green');     
+        $(row).find('td:eq(15)').css('color', 'white'); 
+        $(row).find('td:eq(14)').css('background-color', 'green');     
+        $(row).find('td:eq(14)').css('color', 'white'); 
+        $(row).find('td:eq(13)').css('background-color', 'green');     
+        $(row).find('td:eq(13)').css('color', 'white'); 
+        $(row).find('td:eq(12)').css('background-color', 'green');     
+        $(row).find('td:eq(12)').css('color', 'white'); 
+        $(row).find('td:eq(11)').css('background-color', 'green');     
+        $(row).find('td:eq(11)').css('color', 'white'); 
+        $(row).find('td:eq(10)').css('background-color', 'green');     
+        $(row).find('td:eq(10)').css('color', 'white');
+        $(row).find('td:eq(9)').css('background-color', 'green');     
+        $(row).find('td:eq(9)').css('color', 'white');
+        $(row).find('td:eq(8)').css('background-color', 'green');     
+        $(row).find('td:eq(8)').css('color', 'white');
+        $(row).find('td:eq(7)').css('background-color', 'green');     
+        $(row).find('td:eq(7)').css('color', 'white');
+        $(row).find('td:eq(6)').css('background-color', 'green');     
+        $(row).find('td:eq(6)').css('color', 'white');
+      }
+    }
+  });
+/* ADD END view itos ska & bkl by desta itsd 20032024*/
+
+
+
+ /*  $('#ITOS_REPO_TLB').DataTable();
+   $('#ITOS_REPO_T01').DataTable();
+   $('#ITOS_REPO_T02').DataTable();
+   $('#ITOS_REPO_T03').DataTable();*/
+
+  });
+
+</script>                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="asset_x/vendor/jquery/jquery.min.js"></script>
+    <script src="asset_x/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="asset_x/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="asset_x/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="asset_x/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="asset_x/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="asset_x/js/demo/datatables-demo.js"></script>
+
+        <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  </body>
+
+</body>
+
+</html>
